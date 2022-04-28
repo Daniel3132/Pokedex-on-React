@@ -16,11 +16,3 @@ export const typesProducts ={
     detail: 'detail',
     search : 'search'
 }
-
-export const typesCarrito ={
-    crear: '[carrito] Crear',
-    editar: '[carrito] Editar',
-    eliminar: '[carrito] Eliminar',
-    eliminarAll: '[carrito] EliminarAll',
-    filtrar: '[carrito] filtrar',
-}
