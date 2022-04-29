@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Swal from 'sweetalert2'
 import { buscarPoke } from '../helpers/api'
 import { useForm } from '../hooks/useForm'
+import Card from './Card'
 
 const NavBar = () => {
 
@@ -47,13 +48,7 @@ const NavBar = () => {
         modal === true ?
           <div>
             <button onClick={() => setModal(false)}>Close</button>
-            <h4>{pokemon.name}</h4>
-            <img src={pokemon.sprites.front_default} alt="" />
-            {
-              pokemon.types.map((t, index) =>
-                <p key={index}>{t.type.name}</p>
-              )
-            }
+            <Card pokemon={pokemon} />
           </div>
           : ''
       }

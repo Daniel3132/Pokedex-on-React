@@ -16,23 +16,21 @@ const List = ({ pokemons, page, setPage, total, loading }) => {
 
     return (
         <div>
+            {loading ?
+                <div>Cargando...</div>
+                :
+                pokemons.map(pokemon =>
+                    <Card
+                        key={pokemon.name}
+                        pokemon={pokemon}
+                    />
+                )}
             <Pagination
                 page={page + 1}
                 totalPages={total}
                 onLeft={lastPage}
                 onRight={nextPage}
             />
-            {
-                loading ?
-                    <div>Cargando...</div>
-                    :
-                    pokemons.map(pokemon =>
-                        <Card
-                            key={pokemon.name}
-                            pokemon={pokemon}
-                        />
-                    )
-            }
         </div>
     )
 }
