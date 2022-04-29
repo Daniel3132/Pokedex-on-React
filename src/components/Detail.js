@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { getPokeData } from '../helpers/api'
+import { getlinkSpecies, getPokeData } from '../helpers/api'
 import EvolutionChain from './EvolutionChain'
 
 const Detail = ({ pokemon, setmodal }) => {
 
     const [imagen1, setimagen1] = useState(pokemon.sprites?.front_default)
     const [imagen2, setimagen2] = useState(pokemon.sprites?.front_shiny)
+
+    const [evolution, setEvolution] = useState([])
 
     const changeImage = (side) => {
         side === 'back'
@@ -18,6 +20,17 @@ const Detail = ({ pokemon, setmodal }) => {
             ? setimagen2(pokemon.sprites?.back_shiny)
             : setimagen2(pokemon.sprites?.front_shiny)
     }
+
+    const fetchSpecies = async (id) => {
+        const response = await getlinkSpecies(id)
+        const evolutionChain = await getPokeData(response.evolution_chain.url)
+        setEvolution(evolutionChain)
+    }
+
+    useEffect(() => {
+        fetchSpecies(pokemon.id)
+    }, [])
+
 
     return (
         <>
@@ -63,9 +76,9 @@ const Detail = ({ pokemon, setmodal }) => {
                     </ul>
                 </div>
 
-                {/* <div>
-                    <EvolutionChain species={species} />
-                </div> */}
+                <div>
+                    <EvolutionChain evolutionChain={evolution} />
+                </div>
 
             </section>
 
