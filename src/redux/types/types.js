@@ -8,7 +8,7 @@ export const typesRegister ={
     register: 'register'
 }
 
-export const typesProducts ={
+export const typesPokemons ={
     add: 'add',
     list: 'list',
     edit: 'edit',

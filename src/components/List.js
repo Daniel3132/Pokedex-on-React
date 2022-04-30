@@ -15,22 +15,28 @@ const List = ({ pokemons, page, setPage, total, loading }) => {
     }
 
     return (
-        <div>
-            {loading ?
-                <div>Cargando...</div>
-                :
-                pokemons.map(pokemon =>
-                    <Card
-                        key={pokemon.name}
-                        pokemon={pokemon}
-                    />
-                )}
+        <div className='home'>
             <Pagination
                 page={page + 1}
                 totalPages={total}
                 onLeft={lastPage}
                 onRight={nextPage}
             />
+            <div id='list' >
+                {loading ?
+                    <>
+                        <img style={{ width: '10rem' }} src="https://cdn-icons-png.flaticon.com/512/287/287221.png" alt="" />
+                        <h1> . . . </h1>
+                    </>
+                    :
+
+                    pokemons.map(pokemon =>
+                        <Card
+                            key={pokemon.name}
+                            pokemon={pokemon}
+                        />
+                    )}
+            </div>
         </div>
     )
 }

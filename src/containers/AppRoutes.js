@@ -32,7 +32,6 @@ const AppRoutes = () => {
       <>
       <section className='pantallaCarga'>
         <h1>...</h1>
-        <img src="https://res.cloudinary.com/dcyn2bjb9/image/upload/v1649626694/samples/amazonas/logo_x0mgtj.png" alt="" />
       </section>
       </>
     )

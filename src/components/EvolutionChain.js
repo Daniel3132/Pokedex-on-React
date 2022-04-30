@@ -4,8 +4,8 @@ import { buscarPoke } from '../helpers/api'
 const EvolutionChain = ({ evolutionChain }) => {
 
 	const [babyImage, setbabyImage] = useState()
-	const [midImage, setmidImage] = useState()
-	const [adultImage, setadultImage] = useState()
+	const [midImage, setmidImage] = useState([])
+	const [adultImage, setadultImage] = useState([])
 
 	const baby = evolutionChain?.chain?.species.name
 	const mid = evolutionChain?.chain?.evolves_to.map(e => e.species.name)
@@ -18,8 +18,20 @@ const EvolutionChain = ({ evolutionChain }) => {
 
 	const setImages = async () => {
 		setbabyImage(await getImages(baby))
-		setmidImage(await getImages(mid))
-		setadultImage(await getImages(adult))
+
+		const arrayMid = []	
+		for (const mi of await mid) {
+			const userarrayMid = await getImages(mi)
+			arrayMid.push(userarrayMid)
+		}
+		setmidImage( arrayMid)
+
+		const arrayAdult = []
+		for (const ad of await adult) {
+			const userarrayAdult = await getImages(ad)
+			arrayAdult.push(userarrayAdult)
+		}
+		setadultImage(arrayAdult)
 	}
 
 	useEffect(() => {
@@ -28,22 +40,42 @@ const EvolutionChain = ({ evolutionChain }) => {
 
 
 	return (
-		<div>Evolution Chain:
+		<>
+		<h2>Evolution Chain:</h2>
+		<div>
 			<div>
 				<h1>{baby}</h1>
 				<img src={babyImage} alt="" />
 			</div>
-
 			<div>
-				<h1>{mid}</h1>
-				<img src={midImage} alt="" />
+				<div>			
+					{
+						mid?.map((name, index) =>
+							<h1 key={index}>{name}</h1>
+						)
+					}
+					{
+
+						midImage?.map((a, index) =>
+							<img key={index} src={a} alt='' />
+						)
+					}
+				</div>
 			</div>
-
 			<div>
-				<h1>{adult}</h1>
-				<img src={adultImage} alt="" />
+				{
+					adult?.map((name, index) =>
+						<h1 key={index}>{name}</h1>
+					)
+				}
+				{
+					adultImage.map((a, index) =>
+						<img key={index} src={a} alt='' />
+					)
+				}
 			</div>
 		</div>
+		</>
 	)
 }
 

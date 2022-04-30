@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { getlinkSpecies, getPokeData } from '../helpers/api'
+import { useParams } from 'react-router-dom';
+import { buscarPoke, getlinkSpecies, getPokeData } from '../helpers/api'
 import EvolutionChain from './EvolutionChain'
 
-const Detail = ({ pokemon, setmodal }) => {
+const Detail = () => {
 
-    const [imagen1, setimagen1] = useState(pokemon.sprites?.front_default)
-    const [imagen2, setimagen2] = useState(pokemon.sprites?.front_shiny)
+    const { nombre } = useParams()
+
+    const [pokemon, setpokemon] = useState([])
+
+    const frontDefault = pokemon?.sprites?.front_default
+
+    const [imagen1, setimagen1] = useState()
+    const [imagen2, setimagen2] = useState()
 
     const [evolution, setEvolution] = useState([])
 
@@ -22,66 +29,69 @@ const Detail = ({ pokemon, setmodal }) => {
     }
 
     const fetchSpecies = async (id) => {
+        setimagen1(pokemon?.sprites?.front_default)
+        setimagen2(pokemon.sprites?.front_shiny)
         const response = await getlinkSpecies(id)
-        const evolutionChain = await getPokeData(response.evolution_chain.url)
+        const evolutionChain = await getPokeData(response?.evolution_chain.url)
         setEvolution(evolutionChain)
     }
 
     useEffect(() => {
-        fetchSpecies(pokemon.id)
-    }, [])
-
+        const setElegido = async () => {
+            setpokemon(await buscarPoke(nombre))
+            fetchSpecies(pokemon.id)
+        }
+        setElegido()
+    }, [frontDefault, nombre])
 
     return (
         <>
-            <button onClick={() => setmodal(false)}>close</button>
-            <section>
+            {<section id='detail'>
                 <h1>{pokemon.name}</h1>
                 <span>#{pokemon.id}</span>
-
                 <div>
-                    <img
-                        onMouseOver={() => changeImage('back')}
-                        onMouseLeave={() => changeImage()}
-                        src={imagen1} alt="" />
+                    <div>
+                        <img
+                            onMouseOver={() => changeImage('back')}
+                            onMouseLeave={() => changeImage()}
+                            src={imagen1} alt="" />
+                    </div>
+
+                    <div>
+                        <strong>{pokemon?.sprites?.front_shiny ? 'Shiny' : ''}</strong>
+                        <img
+                            onMouseOver={() => changeImage2('back')}
+                            onMouseLeave={() => changeImage2()}
+                            src={imagen2} alt="" />
+                    </div>
+
+                    <div className='stats'>
+                        <p>Base Experience: {pokemon.base_experience}</p>
+                        <p>height: {pokemon.height / 10} m</p>
+                        <p>weight: {pokemon.weight / 10} kg</p>
+                    </div>
                 </div>
-
+                
+                    <EvolutionChain evolutionChain={evolution} />
+                
+                <h2>abilities</h2>
                 <div>
-                    <strong>{pokemon.sprites.front_shiny ? 'Shiny' : ''}</strong>
-                    <img
-                        onMouseOver={() => changeImage2('back')}
-                        onMouseLeave={() => changeImage2()}
-                        src={imagen2} alt="" />
-                </div>
-
-                <p>Base Experience: {pokemon.base_experience}</p>
-                <p>{pokemon.height / 10} m</p>
-                <p>{pokemon.weight / 10} kg</p>
-
-                <div>
-                    <h5>abilities</h5>
                     <ol>
-                        {pokemon.abilities.map((ability, index) => {
+                        {pokemon.abilities?.map((ability, index) => {
                             return <li key={index}>{ability.ability.name}</li>
                         })}
                     </ol>
                 </div>
-
+                <h2>Moves</h2>
                 <div>
-                    <h5>Moves</h5>
-                    <ul>
-                        {pokemon.moves.map((move, index) => {
+                    <ul className='moves'>
+                        {pokemon.moves?.map((move, index) => {
                             return <li key={index}>{move.move.name}</li>
                         })}
                     </ul>
                 </div>
-
-                <div>
-                    <EvolutionChain evolutionChain={evolution} />
-                </div>
-
-            </section>
-
+                <button>Catch!</button>
+            </section>}
         </>
     )
 }

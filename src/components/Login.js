@@ -21,8 +21,6 @@ const SignupSchema = Yup.object().shape({
         .required('La contraseña obligatoria')
 });
 
-
-
 export const Login = () => {
 
     const dispatch = useDispatch()
@@ -36,7 +34,6 @@ export const Login = () => {
     }
 
     return (
-
         <div>
             <Formik
                 initialValues={
@@ -49,8 +46,6 @@ export const Login = () => {
                 onSubmit={values => {
                     console.log(values)
                     dispatch(loginEmailPassAsync(values.email, values.pass))
-
-
                 }}
             >
                 {({ errors, touched, handleSubmit, handleChange, handleReset }) => (
