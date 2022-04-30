@@ -16,7 +16,8 @@ const Card = ({ pokemon }) => {
                     })}
                 </div>
                 <small>No. {pokemon.id}</small>
-                <Link to={`/detail/${pokemon.name}`}  >See More</Link>
+                <Link to={`/detail/${pokemon.name}`}  >
+                    <button>See More</button></Link>
             </div>
             {
                 modal === true ?

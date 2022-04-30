@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { buscarPoke } from '../helpers/api'
+import { obtenerUsuarioStorage } from '../helpers/LocalStorage'
 import { useForm } from '../hooks/useForm'
+import { logoutAsync } from '../redux/actions/actionLogin'
 import Card from './Card'
 
 const NavBar = () => {
@@ -10,6 +13,9 @@ const NavBar = () => {
 	const navigate = useNavigate()
 	const [modal, setModal] = useState(false)
 	const [pokemon, setPokemon] = useState()
+
+
+	const dispatch = useDispatch()
 
 	const [values, handleInputChange, reset] = useForm({
 		busqueda: ''
@@ -35,10 +41,33 @@ const NavBar = () => {
 		}
 	}
 
+	const handleLogout = () => {
+        Swal.fire({
+            title: '¿Cerrar Sesión?',
+            text: "¿Estás seguro que deseas salir?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(logoutAsync())
+                navigate("/login")
+                Swal.fire(
+                    'Adios!',
+                    'Gracias!',
+                    'success'
+                )
+            }
+        })
+    }
+
 	return (
 		<header>
 			<nav>
 				<div>
+				<p>{obtenerUsuarioStorage('nombre')}</p>
 				<img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt="perfil" />
 				</div>
 				<div>
@@ -49,7 +78,7 @@ const NavBar = () => {
 					</form>
 				</div>
 				<div>
-				<img src="https://cdn-icons-png.flaticon.com/512/126/126467.png" alt="logout" />
+				<img onClick={handleLogout} src="https://cdn-icons-png.flaticon.com/512/126/126467.png" alt="logout" />
 				</div>
 			</nav>
 			{

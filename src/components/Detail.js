@@ -56,9 +56,8 @@ const Detail = () => {
                             onMouseLeave={() => changeImage()}
                             src={imagen1} alt="" />
                     </div>
-
+                    <strong>{pokemon?.sprites?.front_shiny ? 'Shiny: ' : ''}</strong>
                     <div>
-                        <strong>{pokemon?.sprites?.front_shiny ? 'Shiny' : ''}</strong>
                         <img
                             onMouseOver={() => changeImage2('back')}
                             onMouseLeave={() => changeImage2()}
@@ -69,11 +68,18 @@ const Detail = () => {
                         <p>Base Experience: {pokemon.base_experience}</p>
                         <p>height: {pokemon.height / 10} m</p>
                         <p>weight: {pokemon.weight / 10} kg</p>
+                        
+                        <div className='types'>
+                            <p>Types:</p>
+                            {pokemon?.types?.map((type, index) => {
+                                return <strong className={'type ' + type.type.name} key={index}>{type.type.name}</strong>
+                            })}
+                        </div>
                     </div>
                 </div>
-                
-                    <EvolutionChain evolutionChain={evolution} />
-                
+
+                <EvolutionChain evolutionChain={evolution} />
+
                 <h2>abilities</h2>
                 <div>
                     <ol>
