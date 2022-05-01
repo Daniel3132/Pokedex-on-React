@@ -25,7 +25,8 @@ const EvolutionChain = ({ evolutionChain }) => {
 		return arrayMid
 	}
 
-	const getAdult=async(adult = [['pikachu']])=>{
+	const getAdult=async(adult = [[]])=>{
+		
 		const arrayAdult = []
 		for (const ad of adult[0]) {
 			const userarrayAdult = await getImages(ad)
@@ -46,7 +47,7 @@ const EvolutionChain = ({ evolutionChain }) => {
 	useEffect(() => {
 		setImages();
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [adult])
+	}, [baby])
 
 
 	return (
@@ -89,7 +90,6 @@ const EvolutionChain = ({ evolutionChain }) => {
 						}
 					</ul>
 					<div>
-
 						{
 							adultImage ?
 								adultImage?.map((a, index) =>

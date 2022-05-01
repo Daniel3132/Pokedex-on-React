@@ -9,7 +9,7 @@ const Card = ({ pokemon }) => {
                 <img src={pokemon.sprites.front_default} alt="" />
                 <div className='types'>
                     {pokemon.types.map((type, index) => {
-                        return <strong className={'type ' + type.type.name} key={index}>{type.type.name}</strong>
+                        return <strong className={'type ' + type.type.name } key={index}>{type.type.name}</strong>
                     })}
                 </div>
                 <small>No. {pokemon.id}</small>

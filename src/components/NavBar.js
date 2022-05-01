@@ -36,7 +36,7 @@ const NavBar = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		const data = await buscarPoke(values.busqueda)
+		const data = await buscarPoke((values.busqueda).toLocaleLowerCase())
 		if (data === undefined || data === '') {
 			Swal.fire({
 				title: 'Error!',
@@ -96,7 +96,7 @@ const NavBar = () => {
 				modal === true ?
 					<motion.section variants={containerVariants}  initial="hidden" animate="show" exit="exit" style={{margin:'2rem auto'}}>
 						<button  onClick={() => setModal(false)}>X</button>
-						<Card pokemon={pokemon} />
+						<Card pokemon={pokemon}/>
 					</motion.section>
 					: ''
 			}
