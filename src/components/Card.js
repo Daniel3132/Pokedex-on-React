@@ -1,10 +1,7 @@
-import React, { useState } from 'react'
-import { Link} from 'react-router-dom'
-import Detail from './Detail'
-
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Card = ({ pokemon }) => {
-    const [modal, setmodal] = useState(false)
     return (
         <section id='card'>
             <div>
@@ -19,12 +16,6 @@ const Card = ({ pokemon }) => {
                 <Link to={`/detail/${pokemon.name}`}  >
                     <button>See More</button></Link>
             </div>
-            {
-                modal === true ?
-                    <Detail pokemon={pokemon} setmodal={setmodal} />
-                    :
-                    ""
-            }
         </section>
     )
 }

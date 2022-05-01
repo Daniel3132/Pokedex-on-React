@@ -4,8 +4,8 @@ import { buscarPoke } from '../helpers/api'
 const EvolutionChain = ({ evolutionChain }) => {
 
 	const [babyImage, setbabyImage] = useState()
-	const [midImage, setmidImage] = useState()
-	const [adultImage, setadultImage] = useState()
+	const [midImage, setmidImage] = useState([])
+	const [adultImage, setadultImage] = useState([])
 
 	const baby = evolutionChain?.chain?.species.name
 	const mid = evolutionChain?.chain?.evolves_to.map(e => e.species.name)
@@ -16,28 +16,37 @@ const EvolutionChain = ({ evolutionChain }) => {
 		return await data?.sprites?.front_default
 	}
 
+	const getmid = async (mid = '') => {
+		const arrayMid = []
+		for (const mi of  mid) {
+			const userarrayMid = await getImages(mi)
+			arrayMid?.push(userarrayMid)
+		}
+		return arrayMid
+	}
+
+	const getAdult=async(adult = [['pikachu']])=>{
+		const arrayAdult = []
+		for (const ad of adult[0]) {
+			const userarrayAdult = await getImages(ad)
+			arrayAdult?.push(userarrayAdult)
+		}
+		return arrayAdult
+	}
+
 	const setImages = async () => {
 
 		setbabyImage(await getImages(baby))
 
-		const arrayMid = []
-		for (const mi of await mid) {
-			const userarrayMid = await getImages(mi)
-			arrayMid?.push(userarrayMid)
-		}
-		setmidImage(arrayMid)
+		setmidImage(await getmid(mid))
 
-		const arrayAdult = []
-		for (const ad of await adult[0]) {
-			const userarrayAdult = await getImages(ad)
-			arrayAdult?.push(userarrayAdult)
-		}
-		setadultImage(arrayAdult)
+		setadultImage(await getAdult(adult))
 	}
 
 	useEffect(() => {
 		setImages();
-	}, [baby])
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [adult])
 
 
 	return (
@@ -73,7 +82,7 @@ const EvolutionChain = ({ evolutionChain }) => {
 					<ul>
 						{
 							adult ?
-								adult[0].map((name, index) =>
+								adult[0]?.map((name, index) =>
 									<li key={index}>{name}</li>
 								)
 								: ''

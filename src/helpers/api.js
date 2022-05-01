@@ -34,9 +34,7 @@ export const getPokeData = async (url) => {
         const resp = await fetch(url)
         const data = await resp.json()
         return data
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error) {}
 }
 
 //traer la data de especies buscando por id (se usa para obtener la url de cadena de evolucion)

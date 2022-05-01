@@ -2,23 +2,35 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { buscarPoke, getlinkSpecies, getPokeData } from '../helpers/api'
 import EvolutionChain from './EvolutionChain'
+import { motion } from 'framer-motion'
+
+const containerVariants = {
+    hidden: {
+        x: "10vw",
+        opacity: 0,
+    },
+    show: {
+        x: "0vw",
+        opacity: 1,
+        transition: { delay: 0.3 },
+    },
+};
 
 const Detail = () => {
+
     const { nombre } = useParams()
-
     const [pokemon, setpokemon] = useState([])
-
-    const frontDefault = pokemon?.sprites?.front_default
-
-    const [imagen1, setimagen1] = useState()
-    const [imagen2, setimagen2] = useState()
+    const [imagen1, setimagen1] = useState('')
+    const [imagen2, setimagen2] = useState('')
 
     const [evolution, setEvolution] = useState([])
+
+    const front = pokemon?.sprites?.front_default
 
     const changeImage = (side) => {
         side === 'back'
             ? setimagen1(pokemon.sprites?.back_default)
-            : setimagen1(pokemon.sprites?.front_default)
+            : setimagen1(front)
     }
 
     const changeImage2 = (side) => {
@@ -27,26 +39,27 @@ const Detail = () => {
             : setimagen2(pokemon.sprites?.front_shiny)
     }
 
-    const fetchSpecies = async (id) => {
+    const fetchSpecies = async (id = '') => {
         setimagen1(pokemon?.sprites?.front_default)
         setimagen2(pokemon.sprites?.front_shiny)
         const response = await getlinkSpecies(id)
-        const evolutionChain = await getPokeData(response?.evolution_chain.url)
+        const evolutionChain = await getPokeData(response?.evolution_chain?.url)
         setEvolution(evolutionChain)
     }
 
     useEffect(() => {
         const setElegido = async () => {
             setpokemon(await buscarPoke(nombre))
-            fetchSpecies(pokemon.id)
+            fetchSpecies(await pokemon.id)
         }
+
         setElegido()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [frontDefault, nombre])
+    }, [front])
 
     return (
         <>
-            {<section id='detail'>
+            {<motion.section id='detail' variants={containerVariants} initial="hidden" animate="show" exit="exit">
                 <h1>{pokemon.name}</h1>
                 <span style={{ color: 'orange' }} >#{pokemon.id}</span>
                 <hr />
@@ -101,7 +114,7 @@ const Detail = () => {
                 <Link to={`/catch/${pokemon.name}`}  >
                     <button>Catch!</button>
                 </Link>
-            </section>}
+            </motion.section>}
         </>
     )
 }

@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { getPokeData, getPokes } from '../helpers/api'
 import List from './List'
+import { motion } from 'framer-motion'
+
+const containerVariants = {
+	hidden: {
+		opacity: 0,
+	},
+	show: {
+		opacity: 1,
+		transition: { delay: 1 },
+	},
+};
 
 const Home = () => {
 
@@ -12,6 +23,7 @@ const Home = () => {
 	const getPokemons = async () => {
 		try {
 			setLoading(true)
+			//primero el numero limite por pagina, luego se multiplica para obtener las paginas segun el limite
 			const data = await getPokes(25, 25 * page)
 			//array de promesas
 			const promises = data.results.map(async (pokemon) => {
@@ -31,7 +43,7 @@ const Home = () => {
 	}, [page])
 
 	return (
-		<section>
+		<motion.div variants={containerVariants} initial="hidden" animate="show" exit="exit">
 			{
 				<List
 					loading={loading}
@@ -41,7 +53,7 @@ const Home = () => {
 					total={total}
 				/>
 			}
-		</section >
+		</motion.div >
 	)
 }
 

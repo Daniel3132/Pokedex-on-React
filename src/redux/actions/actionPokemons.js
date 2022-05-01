@@ -89,7 +89,7 @@ export const editPokemons = (codigo, pokemon) => {
 
 export const editSync = (pokemon) => {
     return {
-        type: typesPokemons.editSync,
+        type: typesPokemons.edit,
         payload: pokemon
     }
 }

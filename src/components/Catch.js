@@ -8,7 +8,19 @@ import { obtenerUsuarioStorage } from '../helpers/LocalStorage'
 import { useForm } from '../hooks/useForm'
 import { addPokemon } from '../redux/actions/actionPokemons'
 import { useNavigate } from 'react-router-dom'
+import {motion} from 'framer-motion'
 
+const containerVariants = {
+    hidden: {
+      x: "10vw",
+      opacity: 0,
+    },
+    show: {
+      x: "0vw",
+      opacity: 1,
+      transition: { delay: 0.3 },
+    },
+  };
 const Add = () => {
 
 	const dispatch = useDispatch()
@@ -62,18 +74,16 @@ const Add = () => {
 
 
 	return (
-		<div>
+		<motion.section variants={containerVariants}  initial="hidden" animate="show" exit="exit">
 			<form onSubmit={handleSubmit} className="addForm">
 				<h1>Catch Pokemon!</h1>
 				<p>Do you wanna catch this wild {nombre} level {level}?</p>
 				<img src={pokemon?.sprites?.front_default} alt="" />
 				<div>
-					{/* <input type="text" name="trainer" placeholder="Trainer" value={trainer} /> */}
 					<label>Give a Nickname to your new pokemon</label>
 					<input type="text" name="nickname" placeholder="Nickname" value={nickname} onChange={handleInputChange} required />
 					<input type="text" name="nombre" placeholder="Pokemon Name" value={nombre} readOnly />
 					<input type="text" name="level" placeholder="level" value={level}  readOnly/>
-					{/* <input type="text" name="codigo" placeholder="Codigo" value={codigo}  /> */}
 				</div>
 				<button type="submit">
 					<h2>Catch!</h2>
@@ -81,7 +91,7 @@ const Add = () => {
 
 			</form>
 
-		</div>
+		</motion.section>
 	)
 }
 

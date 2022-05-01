@@ -7,7 +7,19 @@ import { obtenerUsuarioStorage } from '../helpers/LocalStorage'
 import { useForm } from '../hooks/useForm'
 import { logoutAsync } from '../redux/actions/actionLogin'
 import Card from './Card'
+import {motion} from 'framer-motion'
 
+const containerVariants = {
+    hidden: {
+      y: "5vw",
+      opacity: 0,
+    },
+    show: {
+      y: "0vw",
+      opacity: 1,
+      transition: { delay: 0.5 },
+    },
+  };
 const NavBar = () => {
 
 	const navigate = useNavigate()
@@ -82,10 +94,10 @@ const NavBar = () => {
 			</nav>
 			{
 				modal === true ?
-					<div style={{margin:'2rem auto'}}>
-						<button  onClick={() => setModal(false)}>Close</button>
+					<motion.section variants={containerVariants}  initial="hidden" animate="show" exit="exit" style={{margin:'2rem auto'}}>
+						<button  onClick={() => setModal(false)}>X</button>
 						<Card pokemon={pokemon} />
-					</div>
+					</motion.section>
 					: ''
 			}
 		</header>
