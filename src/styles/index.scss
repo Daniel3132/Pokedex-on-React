@@ -1,24 +1,41 @@
 @import 'navbar';
 @import 'list';
 @import 'detail';
+@import 'addForm';
+@import 'profile';
 
-*{
-    margin: 0 ;
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-    background-color: rgb(7, 7, 7);
+body {
+    background-color: #0b0b61;
     color: rgb(224, 224, 224);
 }
 
+$negro : rgb(18, 17, 17);
+
 img,
-button{
+button {
     cursor: pointer;
 }
 
 input,
-button{
+button {
     border: none;
     height: 1.5rem;
-    border-radius: 3px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px 5px  rgba(0, 0, 0, 0.395);
+}
+
+button {
+    background-color: $negro;
+    border: 3px solid $negro;
+    color: white;
+
+    &:hover {
+        background-color: white;
+        color: $negro;
+    }
 }

@@ -25,8 +25,10 @@ const List = ({ pokemons, page, setPage, total, loading }) => {
             <div id='list' >
                 {loading ?
                     <>
+                    <div>
                         <img style={{ width: '10rem' }} src="https://cdn-icons-png.flaticon.com/512/287/287221.png" alt="" />
-                        <h1> . . . </h1>
+                        <h1 style={{ textAlign: 'center' }}> . . . </h1>
+                        </div>
                     </>
                     :
 
@@ -37,6 +39,12 @@ const List = ({ pokemons, page, setPage, total, loading }) => {
                         />
                     )}
             </div>
+            <Pagination
+                page={page + 1}
+                totalPages={total}
+                onLeft={lastPage}
+                onRight={nextPage}
+            />
         </div>
     )
 }

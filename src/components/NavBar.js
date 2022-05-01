@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { buscarPoke } from '../helpers/api'
 import { obtenerUsuarioStorage } from '../helpers/LocalStorage'
@@ -13,7 +13,6 @@ const NavBar = () => {
 	const navigate = useNavigate()
 	const [modal, setModal] = useState(false)
 	const [pokemon, setPokemon] = useState()
-
 
 	const dispatch = useDispatch()
 
@@ -68,7 +67,7 @@ const NavBar = () => {
 			<nav>
 				<div>
 				<p>{obtenerUsuarioStorage('nombre')}</p>
-				<img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt="perfil" />
+				<img onClick={()=>navigate('/profile')} src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt="perfil" />
 				</div>
 				<div>
 					<img onClick={()=>navigate('/')} className='pokeLogo' src="https://crisgon.github.io/pokedex/src/images/logo.png" alt="Pokemon Logo" />

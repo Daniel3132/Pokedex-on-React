@@ -1,0 +1,60 @@
+.addForm {
+    margin: 5% auto;
+    width: 50vw;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: rgb(44, 57, 142);
+    box-shadow: 8px 10px 2px 8px rgba(0, 0, 0, 0.628);
+
+    img {
+        width: 50%;
+    }
+
+    h1 {
+        margin: 1rem;
+        font-size: 22px;
+    }
+
+    div {
+        gap: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    input,
+    button {
+        border-radius: 8px;
+        height: 2rem;
+    }
+
+    button {
+        margin: 5% auto;
+        width: 50%;
+    }
+}
+
+.formulario {
+    background-color: rgb(234, 20, 20);
+    line-height: 3rem;
+    padding: 1rem;
+    text-align: center;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    color: black;
+    border-radius: 8px ;
+    box-shadow: 8px 10px 2px 8px rgba(0, 0, 0, 0.628);
+    img {
+        margin: 0 auto;
+    }
+
+    button {
+        margin-top: 1rem;
+    }
+    a{
+        
+        color: black;
+    }
+}

@@ -51,6 +51,7 @@ export const Login = () => {
                 {({ errors, touched, handleSubmit, handleChange, handleReset }) => (
                     <Form
                         className='formulario'>
+                        <img style={{ width: '2.5rem' }} src="https://cdn-icons-png.flaticon.com/512/287/287221.png" alt="" />
 
                         <h1>Iniciar sesión</h1>
 

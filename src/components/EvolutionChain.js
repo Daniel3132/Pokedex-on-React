@@ -17,19 +17,20 @@ const EvolutionChain = ({ evolutionChain }) => {
 	}
 
 	const setImages = async () => {
+
 		setbabyImage(await getImages(baby))
 
 		const arrayMid = []
 		for (const mi of await mid) {
 			const userarrayMid = await getImages(mi)
-			arrayMid.push(userarrayMid)
+			arrayMid?.push(userarrayMid)
 		}
 		setmidImage(arrayMid)
 
 		const arrayAdult = []
 		for (const ad of await adult[0]) {
 			const userarrayAdult = await getImages(ad)
-			arrayAdult.push(userarrayAdult)
+			arrayAdult?.push(userarrayAdult)
 		}
 		setadultImage(arrayAdult)
 	}

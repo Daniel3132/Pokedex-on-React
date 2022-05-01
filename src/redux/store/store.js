@@ -6,17 +6,15 @@ import { obtenerLocalStorage } from "../../helpers/LocalStorage";
 import { pokemonsReducers } from "../reducers/pokemonsReducers";
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-const storageState = obtenerLocalStorage()
 
 const reducersEnviar = combineReducers({
     login: loginReducers,
     register: registerReducers,
-    products: pokemonsReducers
+    pokemons: pokemonsReducers
 })
 
 const store = createStore(
     reducersEnviar,
-    storageState,
     composeEnhancers(
         applyMiddleware(thunk)
     )

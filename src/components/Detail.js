@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { buscarPoke, getlinkSpecies, getPokeData } from '../helpers/api'
 import EvolutionChain from './EvolutionChain'
 
 const Detail = () => {
-
     const { nombre } = useParams()
 
     const [pokemon, setpokemon] = useState([])
@@ -42,13 +41,15 @@ const Detail = () => {
             fetchSpecies(pokemon.id)
         }
         setElegido()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [frontDefault, nombre])
 
     return (
         <>
             {<section id='detail'>
                 <h1>{pokemon.name}</h1>
-                <span>#{pokemon.id}</span>
+                <span style={{ color: 'orange' }} >#{pokemon.id}</span>
+                <hr />
                 <div>
                     <div>
                         <img
@@ -63,24 +64,23 @@ const Detail = () => {
                             onMouseLeave={() => changeImage2()}
                             src={imagen2} alt="" />
                     </div>
-
                     <div className='stats'>
-                        <p>Base Experience: {pokemon.base_experience}</p>
-                        <p>height: {pokemon.height / 10} m</p>
-                        <p>weight: {pokemon.weight / 10} kg</p>
-                        
+                        <p><strong>Base Experience:</strong> {pokemon.base_experience}</p>
+                        <p> <strong>Height:</strong> {pokemon.height / 10} m</p>
+                        <p><strong>Weight:</strong> {pokemon.weight / 10} kg</p>
+
                         <div className='types'>
-                            <p>Types:</p>
+                            <p><strong>Types:</strong></p>
                             {pokemon?.types?.map((type, index) => {
-                                return <strong className={'type ' + type.type.name} key={index}>{type.type.name}</strong>
+                                return <span className={'type ' + type.type.name} key={index}>{type.type.name}</span>
                             })}
                         </div>
                     </div>
                 </div>
-
+                <hr />
                 <EvolutionChain evolutionChain={evolution} />
-
-                <h2>abilities</h2>
+                <hr />
+                <h2>Abilities</h2>
                 <div>
                     <ol>
                         {pokemon.abilities?.map((ability, index) => {
@@ -88,6 +88,7 @@ const Detail = () => {
                         })}
                     </ol>
                 </div>
+                <hr />
                 <h2>Moves</h2>
                 <div>
                     <ul className='moves'>
@@ -96,7 +97,10 @@ const Detail = () => {
                         })}
                     </ul>
                 </div>
-                <button>Catch!</button>
+                <hr />
+                <Link to={`/catch/${pokemon.name}`}  >
+                    <button>Catch!</button>
+                </Link>
             </section>}
         </>
     )

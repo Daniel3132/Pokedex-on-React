@@ -1,0 +1,40 @@
+#profile {
+    width: 80vw;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #ff8f34;
+    text-align: center;
+    box-shadow: 5px 15px 1px 8px rgba(0, 0, 0, 0.461);
+    border-radius: 10px;
+    color: black;
+
+    h3 {
+        margin-top: 1rem;
+    }
+
+    .trainerCont {
+        margin: 1rem 0;
+        display: flex;
+        gap: 1rem;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        div {
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            width: 10rem;
+            border-radius: 8px;
+            box-shadow: 5px 5px 1px 3px rgba(0, 0, 0, 0.461);
+            color: whitesmoke;
+
+            button,
+            a {
+                border-radius: 0;
+                width: 100%;
+                box-shadow: none;
+            }
+        }
+    }
+
+}
