@@ -79,7 +79,7 @@ const NavBar = () => {
 			<nav>
 				<div>
 				<p>{obtenerUsuarioStorage('nombre')}</p>
-				<img onClick={()=>navigate('/profile')} src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt="perfil" />
+				<img  className='profilePhoto' onClick={()=>navigate('/profile')} src={obtenerUsuarioStorage('photo')} alt="perfil" />
 				</div>
 				<div>
 					<img onClick={()=>navigate('/')} className='pokeLogo' src="https://crisgon.github.io/pokedex/src/images/logo.png" alt="Pokemon Logo" />

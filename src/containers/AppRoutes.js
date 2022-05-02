@@ -16,7 +16,7 @@ const AppRoutes = () => {
     const auth = getAuth()
     onAuthStateChanged(auth, (user) => {
       if (user?.uid) {
-        guardarUsuarioStorage(user.displayName, user.email)
+        guardarUsuarioStorage(user.displayName, user.email, user.photoURL)
         console.log(user)
         setIsLoggedIn(true)
       }

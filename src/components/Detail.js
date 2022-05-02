@@ -70,8 +70,9 @@ const Detail = () => {
                             onMouseLeave={() => changeImage()}
                             src={imagen1} alt="" />
                     </div>
-                    <strong>{pokemon?.sprites?.front_shiny ? 'Shiny: ' : ''}</strong>
+                    
                     <div>
+                        <strong>{pokemon?.sprites?.front_shiny ? 'Shiny: ' : ''}</strong>
                         <img
                             onMouseOver={() => changeImage2('back')}
                             onMouseLeave={() => changeImage2()}
@@ -102,8 +103,9 @@ const Detail = () => {
                     </ol>
                 </div>
                 <hr />
-                <h2>Moves</h2>
+                
                 <div>
+                    <h2>Moves</h2>
                     <ul className='moves'>
                         {pokemon.moves?.map((move, index) => {
                             return <li key={index}>{move.move.name}</li>

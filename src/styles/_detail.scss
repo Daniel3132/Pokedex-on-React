@@ -37,15 +37,11 @@
     }
     .moves {
         width: 100%;
-        text-align: left;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         flex-wrap: wrap;
-        gap: 5px;
-        height: 30rem;
-        li {
-            margin-right: 2rem;
-        }
+        gap: 2rem;
+        
     }
     ol {
         display: flex;
