@@ -3,7 +3,7 @@ header{
     flex-direction: column;
     padding-bottom: 1rem;
     nav{
-        background-color: rgb(255, 42, 42);
+        background-color: rgb(255, 52, 52);
         color: black;
         display: flex;
         align-items: center;
@@ -22,10 +22,22 @@ header{
                 height: 2rem;
             }
         }
+        input,button{
+            padding: 0 1rem;
+            height: 2.5rem;
+        }
+        input{
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+        }
+        button{
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+        }
         .pokeLogo{
             margin-top: 1rem;
-            width: 60%;
-            height: 5rem;
+            width: 70%;
+            height: 6rem;
         }
     } 
 }
@@ -33,4 +45,5 @@ header{
     display: flex;
     gap: 1rem;
     margin: 2rem auto;
+    color: black;
 }

@@ -57,7 +57,6 @@ const EvolutionChain = ({ evolutionChain }) => {
 				<div className='evolve2'>
 					<h3>{baby}</h3>
 					<div>
-
 						<img src={babyImage} alt="" />
 					</div>
 				</div>
@@ -65,12 +64,11 @@ const EvolutionChain = ({ evolutionChain }) => {
 					<ul>
 						{
 							mid?.map((name, index) =>
-								<li key={index}>{name}</li>
+								<h3 key={index}>{name}</h3>
 							)
 						}
 					</ul>
 					<div>
-
 						{
 
 							midImage?.map((a, index) =>
@@ -80,15 +78,15 @@ const EvolutionChain = ({ evolutionChain }) => {
 					</div>
 				</div>
 				<div className='evolve2'>
-					<ul>
+					<ol>
 						{
 							adult ?
 								adult[0]?.map((name, index) =>
-									<li key={index}>{name}</li>
+									<h3 key={index}>{name}</h3>
 								)
 								: ''
 						}
-					</ul>
+					</ol>
 					<div>
 						{
 							adultImage ?

@@ -6,23 +6,29 @@ $negro : #080808;
 }
 
 #list {
+    width: 95%;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 3rem;
 }
 
 #card {
-    margin: 0 auto;
+    margin: .5rem auto;
     background-color: $negro;
     border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     width: 10rem;
     height: 15rem;
-    box-shadow: 5px 15px 1px 8px rgba(0, 0, 0, 0.461);
+    box-shadow: 5px 15px 1px 3px rgba(0, 0, 0, 0.461);
 
-
+    h3{
+        text-transform: capitalize;
+    }
     div {
         margin: 1rem 0;
         display: flex;
@@ -51,6 +57,9 @@ $negro : #080808;
                 background-color: rgb(62, 62, 62);
             }
         }
+    }
+    &:hover{
+        transform: scale(1.1);
     }
 }
 

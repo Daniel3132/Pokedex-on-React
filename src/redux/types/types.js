@@ -1,18 +1,17 @@
-export const typesLogin ={
+export const typesLogin = {
     login: 'login',
-    logout: 'logout',
-    
+    logout: 'logout'
 }
 
-export const typesRegister ={
+export const typesRegister = {
     register: 'register'
 }
 
-export const typesPokemons ={
+export const typesPokemons = {
     add: 'add',
     list: 'list',
     edit: 'edit',
     delete: 'delete',
     detail: 'detail',
-    search : 'search'
+    search: 'search'
 }

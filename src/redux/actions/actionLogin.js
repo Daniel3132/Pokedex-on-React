@@ -4,7 +4,6 @@ import { typesLogin } from "../types/types"
 
 
 //--------------------Logout----------------------
-
 export const logoutAsync = () => {
     return (dispatch) => {
         const auth = getAuth()
@@ -25,7 +24,7 @@ export const logoutSync = () => {
     }
 }
 
-//---------------------------//
+//------------Login Google---------------//
 export const loginGoogle = () => {
     return (dispatch) => {
         const auth = getAuth()
@@ -38,7 +37,8 @@ export const loginGoogle = () => {
             })
     }
 }
-//-----------Facebook---------------//
+
+//-----------Login Facebook---------------//
 export const loginFacebook = () => {
     return (dispatch) => {
         const auth = getAuth()
@@ -53,7 +53,6 @@ export const loginFacebook = () => {
 }
 
 
-
 //validar usuario y Contrase;a
 export const loginEmailPassAsync = (email, password) => {
 
@@ -64,11 +63,9 @@ export const loginEmailPassAsync = (email, password) => {
                 dispatch(loginSincronico(user.email, user.password))
                 console.log('Usuario autorizado')
             })
-
             .catch(error => {
                 console.warn(error, 'No autorizado')
             })
-
     }
 }
 

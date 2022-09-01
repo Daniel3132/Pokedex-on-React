@@ -9,6 +9,22 @@
     text-align: center;
     border-radius: 2rem;
     box-shadow: 8px 10px 2px 8px  rgba(0, 0, 0, 0.628);
+    h1{
+        width: fit-content;
+        margin: 0 auto;
+        font-size: 2.5rem;
+        border-bottom: 2px solid white;
+    }
+    h1,
+    h3,
+    li,
+    span{
+        text-transform: capitalize;
+    }
+    h2{
+        font-size: 2rem;
+        color: greenyellow;
+    }
     div {
         display: flex;
         align-items: center;
@@ -26,7 +42,7 @@
     }
     .evolve2{
         flex-direction: column;
-        ul{
+        ol{
             display: flex;
             justify-content: space-between;
             width: 80%; 
@@ -52,7 +68,21 @@
         width: 5rem;
     }
     button{
-        width: 90%;
+        width: fit-content;
+        font-size: 1.5rem;
+        padding: .5rem 1rem;
+        background-color: rgb(244, 53, 53);
+        color: black;
+        &:hover{
+            background-color: black;
+            color: white;
+        }
+    }
+    .btnVerMas{
+        color: white;
+        font-size: 1rem;
+        padding: .2rem .5rem;
+        background-color: black;
     }
     strong{
         text-decoration: underline;

@@ -27,12 +27,19 @@
             border-radius: 8px;
             box-shadow: 5px 5px 1px 3px rgba(0, 0, 0, 0.461);
             color: whitesmoke;
+            padding-top: 1rem;
+            h4{
+                text-transform: capitalize;
+            }
 
             button,
             a {
                 border-radius: 0;
                 width: 100%;
                 box-shadow: none;
+            }
+            &:hover{
+                transform: scale(1.1);
             }
         }
 

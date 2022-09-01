@@ -1,0 +1,51 @@
+body{
+    backdrop-filter: blur(0px);
+}
+.login{
+    width: fit-content;
+    h2{
+        font-size: 2rem;
+    }
+    margin: 5% 5% 0 ;
+    .formulario{
+        display: flex;
+        align-items: center;
+        height: fit-content;
+        font-size: larger;
+        input{
+            margin: 1rem 0;
+            height: 2.5rem;
+            padding: 0 1rem;
+        }
+        small{
+            height: fit-content;
+            margin: 0;
+            line-height: normal;
+        }
+        button{
+            width: fit-content;
+            text-align: center;
+            align-items: center;
+            padding: .5rem 1rem;
+            display: flex;
+            margin-top: 1rem;
+            background-color: rgb(32, 32, 32);
+            &:hover{
+                color: black;
+                background-color: white;
+            }
+        }
+        .btnCont{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            gap: 2rem;
+            button{
+                margin-top: 2rem;
+                border-radius: 100%;
+                padding: .5rem;
+                height: fit-content;
+            }
+        }
+    }
+}

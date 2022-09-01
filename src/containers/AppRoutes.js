@@ -30,9 +30,9 @@ const AppRoutes = () => {
   if (checking) {
     return (
       <>
-      <section className='pantallaCarga'>
-        <h1>...</h1>
-      </section>
+        <section className='pantallaCarga'>
+          <h1 style={{margin:'1rem auto'}}>...</h1>
+        </section>
       </>
     )
   }

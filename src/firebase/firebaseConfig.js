@@ -24,8 +24,8 @@ const facebook = new FacebookAuthProvider()
 const baseDatos = getFirestore()
 
 export {
-    app,
-    google,
-    baseDatos,
-    facebook
+  app,
+  google,
+  baseDatos,
+  facebook
 }

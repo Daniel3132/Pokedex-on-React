@@ -4,21 +4,20 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { loginEmailPassAsync, loginFacebook, loginGoogle } from '../redux/actions/actionLogin';
 import { Link } from 'react-router-dom';
+import '../styles/login.scss'
 
 //----------------Validacion de cada input -----------
 const SignupSchema = Yup.object().shape({
-
-
     email: Yup.string()
         .email('debe ser de tipo email, ex. ana@gmail.com')
         .min(5, 'El Correo es muy corto')
         .max(50, 'excede el maximo')
-        .required('Correo Obligatorio'),
+        .required('El correo es obligatorio'),
 
     pass: Yup.string()
         .min(5, 'Mínimo 5 caracteres')
         .max(10, 'Máximo 10')
-        .required('La contraseña obligatoria')
+        .required('La contraseña es obligatoria')
 });
 
 export const Login = () => {
@@ -28,13 +27,13 @@ export const Login = () => {
     const handleGoogle = () => {
         dispatch(loginGoogle())
     }
-    
+
     const handleFacebook = () => {
         dispatch(loginFacebook())
     }
 
     return (
-        <div>
+        <section className='login'>
             <Formik
                 initialValues={
                     {
@@ -53,15 +52,15 @@ export const Login = () => {
                         className='formulario'>
                         <img style={{ width: '2.5rem' }} src="https://cdn-icons-png.flaticon.com/512/287/287221.png" alt="" />
 
-                        <h1>Iniciar sesión</h1>
+                        <h2>Iniciar sesión</h2>
 
-                        <Field name="email" placeholder="Correo Electronico" type="email" style={{ margin: "2%" }} />
+                        <Field name="email" placeholder="Correo Electronico" type="email" />
                         {errors.email && touched.email ?
-                            (<div>{errors.email}</div>) : null}
+                            (<small>{errors.email}</small>) : null}
 
-                        <Field name="pass" placeholder="Contraseña" type="password" style={{ margin: "2%" }} />
+                        <Field name="pass" placeholder="Contraseña" type="password" />
                         {errors.pass && touched.pass ?
-                            (<div>{errors.pass}</div>) : null}
+                            (<small>{errors.pass}</small>) : null}
 
                         <button type="submit" >Enviar</button>
 
@@ -94,6 +93,6 @@ export const Login = () => {
                     </Form>
                 )}
             </Formik>
-        </div>
+        </section>
     );
 } 

@@ -22,6 +22,7 @@ const Detail = () => {
     const [pokemon, setpokemon] = useState([])
     const [imagen1, setimagen1] = useState('')
     const [imagen2, setimagen2] = useState('')
+    const [Movimientos, setMovimientos] = useState(4)
 
     const [evolution, setEvolution] = useState([])
 
@@ -107,10 +108,17 @@ const Detail = () => {
                 <div>
                     <h2>Moves</h2>
                     <ul className='moves'>
-                        {pokemon.moves?.map((move, index) => {
-                            return <li key={index}>{move.move.name}</li>
-                        })}
+                        {pokemon.moves?.map((move, index) => 
+                            index < Movimientos ?
+                           <li key={index}>{move.move.name}</li>
+                           : null
+                        )}
                     </ul>
+                    {
+                        ((pokemon.moves)?.length - Movimientos) !== 0 ? 
+                        <button className='btnVerMas' onClick={()=>setMovimientos(pokemon?.moves.length)}>Ver más ({ (pokemon.moves)?.length - Movimientos})</button>
+                        : <button className='btnVerMas' onClick={()=>setMovimientos(4)}>Ver Menos</button>
+                    }
                 </div>
                 <hr />
                 <Link to={`/catch/${pokemon.name}`}  >
