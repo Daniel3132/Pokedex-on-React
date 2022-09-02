@@ -7,19 +7,19 @@ import { obtenerUsuarioStorage } from '../helpers/LocalStorage'
 import { useForm } from '../hooks/useForm'
 import { logoutAsync } from '../redux/actions/actionLogin'
 import Card from './Card'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const containerVariants = {
-    hidden: {
-      y: "5vw",
-      opacity: 0,
-    },
-    show: {
-      y: "0vw",
-      opacity: 1,
-      transition: { delay: 0.5 },
-    },
-  };
+	hidden: {
+		y: "5vw",
+		opacity: 0,
+	},
+	show: {
+		y: "0vw",
+		opacity: 1,
+		transition: { delay: 0.5 },
+	},
+};
 const NavBar = () => {
 
 	const navigate = useNavigate()
@@ -53,50 +53,52 @@ const NavBar = () => {
 	}
 
 	const handleLogout = () => {
-        Swal.fire({
-            title: '¿Cerrar Sesión?',
-            text: "¿Estás seguro que deseas salir?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                dispatch(logoutAsync())
-                navigate("/login")
-                Swal.fire(
-                    'Adios!',
-                    'Gracias!',
-                    'success'
-                )
-            }
-        })
-    }
+		Swal.fire({
+			title: '¿Cerrar Sesión?',
+			text: "¿Estás seguro que deseas salir?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				dispatch(logoutAsync())
+				navigate("/login")
+				Swal.fire(
+					'Adios!',
+					'Gracias!',
+					'success'
+				)
+			}
+		})
+	}
 
 	return (
 		<header>
 			<nav>
 				<div>
-				<p>{obtenerUsuarioStorage('nombre')}</p>
-				<img  className='profilePhoto' onClick={()=>navigate('/profile')} src={obtenerUsuarioStorage('photo')} alt="perfil" />
+					<p>{obtenerUsuarioStorage('nombre')}</p>
+					<img className='profilePhoto' onClick={() => navigate('/profile')} src={obtenerUsuarioStorage('photo')} alt="perfil" />
 				</div>
 				<div>
-					<img onClick={()=>navigate('/')} className='pokeLogo' src="https://crisgon.github.io/pokedex/src/images/logo.png" alt="Pokemon Logo" />
+					<img onClick={() => navigate('/')} className='pokeLogo' src="https://crisgon.github.io/pokedex/src/images/logo.png" alt="Pokemon Logo" />
 					<form onSubmit={handleSubmit}>
 						<input name='busqueda' value={busqueda} onChange={handleInputChange} type="text" placeholder='Search by name or Id' />
-						<button type="submit">Search</button>
+						<button type="submit">
+							<i class="fas fa-search"></i>
+						</button>
 					</form>
 				</div>
 				<div>
-				<img onClick={handleLogout} src="https://cdn-icons-png.flaticon.com/512/126/126467.png" alt="logout" />
+					<img onClick={handleLogout} src="https://cdn-icons-png.flaticon.com/512/126/126467.png" alt="logout" />
 				</div>
 			</nav>
 			{
 				modal === true ?
-					<motion.section variants={containerVariants}  initial="hidden" animate="show" exit="exit" style={{margin:'2rem auto'}}>
-						<button  onClick={() => setModal(false)}>X</button>
-						<Card pokemon={pokemon}/>
+					<motion.section variants={containerVariants} initial="hidden" animate="show" exit="exit" style={{ margin: '2rem auto' }}>
+						<button onClick={() => setModal(false)}>X</button>
+						<Card pokemon={pokemon} />
 					</motion.section>
 					: ''
 			}

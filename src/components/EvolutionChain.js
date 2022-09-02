@@ -18,15 +18,15 @@ const EvolutionChain = ({ evolutionChain }) => {
 
 	const getmid = async (mid = '') => {
 		const arrayMid = []
-		for (const mi of  mid) {
+		for (const mi of mid) {
 			const userarrayMid = await getImages(mi)
 			arrayMid?.push(userarrayMid)
 		}
 		return arrayMid
 	}
 
-	const getAdult=async(adult = [[]])=>{
-		
+	const getAdult = async (adult = [[]]) => {
+
 		const arrayAdult = []
 		for (const ad of adult[0]) {
 			const userarrayAdult = await getImages(ad)
@@ -36,17 +36,14 @@ const EvolutionChain = ({ evolutionChain }) => {
 	}
 
 	const setImages = async () => {
-
 		setbabyImage(await getImages(baby))
-
 		setmidImage(await getmid(mid))
-
 		setadultImage(await getAdult(adult))
 	}
 
 	useEffect(() => {
 		setImages();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [baby])
 
 

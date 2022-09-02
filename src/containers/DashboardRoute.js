@@ -1,6 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import BgChoose from '../components/BgChoose';
 import Catch from '../components/Catch';
 import Detail from '../components/Detail';
 import Home from '../components/Home';
@@ -24,6 +25,7 @@ const DashboardRoute = () => {
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </AnimatePresence>
+                <BgChoose/>
             </>
         </div>
     );

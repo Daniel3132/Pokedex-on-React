@@ -4,13 +4,10 @@ $negro : rgb(18, 17, 17);
     font-family: Arial, Helvetica, sans-serif;
 }
 body {
-    background: url('https://wallpaperaccess.com/full/1242852.jpg') ;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-position: center;
-    background-attachment: fixed;
-    backdrop-filter: blur(4px);
-    color: rgb(224, 224, 224);;
+    color: rgb(224, 224, 224);; 
     overflow-x: hidden;
 }
 
@@ -46,3 +43,4 @@ button {
 @import 'addForm';
 @import 'profile';
 @import 'types';
+@import 'bgChoose';

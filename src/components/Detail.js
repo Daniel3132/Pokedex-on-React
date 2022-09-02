@@ -71,7 +71,7 @@ const Detail = () => {
                             onMouseLeave={() => changeImage()}
                             src={imagen1} alt="" />
                     </div>
-                    
+
                     <div>
                         <strong>{pokemon?.sprites?.front_shiny ? 'Shiny: ' : ''}</strong>
                         <img
@@ -104,20 +104,20 @@ const Detail = () => {
                     </ol>
                 </div>
                 <hr />
-                
+
                 <div>
                     <h2>Moves</h2>
                     <ul className='moves'>
-                        {pokemon.moves?.map((move, index) => 
+                        {pokemon.moves?.map((move, index) =>
                             index < Movimientos ?
-                           <li key={index}>{move.move.name}</li>
-                           : null
+                                <li key={index}>{move.move.name}</li>
+                                : null
                         )}
                     </ul>
                     {
-                        ((pokemon.moves)?.length - Movimientos) !== 0 ? 
-                        <button className='btnVerMas' onClick={()=>setMovimientos(pokemon?.moves.length)}>Ver más ({ (pokemon.moves)?.length - Movimientos})</button>
-                        : <button className='btnVerMas' onClick={()=>setMovimientos(4)}>Ver Menos</button>
+                        ((pokemon.moves)?.length - Movimientos) !== 0 ?
+                            <button className='btnVerMas' onClick={() => setMovimientos(pokemon?.moves.length)}>Ver más ({(pokemon.moves)?.length - Movimientos})</button>
+                            : <button className='btnVerMas' onClick={() => setMovimientos(4)}>Ver Menos</button>
                     }
                 </div>
                 <hr />

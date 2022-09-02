@@ -51,10 +51,10 @@ $negro : #080808;
             margin-top: 0.5rem;
             height: 1.5rem;
             border-radius: 0 0 10px 10px;
-
+            background-color: rgb(226, 226, 226);
+            color: $negro;
             &:hover {
-                color: white;
-                background-color: rgb(62, 62, 62);
+                background-color: rgb(255, 60, 60);
             }
         }
     }

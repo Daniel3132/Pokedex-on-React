@@ -14,6 +14,9 @@ const List = ({ pokemons, page, setPage, total, loading }) => {
         setPage(nextPage)
     }
 
+    document.body.style.backdropFilter = `blur(4px)`;
+
+
     return (
         <div className='home'>
             <Pagination

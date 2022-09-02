@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { loginEmailPassAsync, loginFacebook, loginGoogle } from '../redux/actions/actionLogin';
 import { Link } from 'react-router-dom';
 import '../styles/login.scss'
+import BgChoose from './BgChoose';
+
 
 //----------------Validacion de cada input -----------
 const SignupSchema = Yup.object().shape({
@@ -23,7 +25,7 @@ const SignupSchema = Yup.object().shape({
 export const Login = () => {
 
     const dispatch = useDispatch()
-
+    
     const handleGoogle = () => {
         dispatch(loginGoogle())
     }
@@ -93,6 +95,7 @@ export const Login = () => {
                     </Form>
                 )}
             </Formik>
+            <BgChoose />
         </section>
     );
 } 

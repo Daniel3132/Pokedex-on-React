@@ -30,7 +30,7 @@ const Add = () => {
 	const { nombre } = useParams()
 	const trainer = obtenerUsuarioStorage('email')
 	const codigo = uuid()
-	
+
 	const image = pokemon?.sprites?.front_default
 
 	useEffect(() => {
@@ -38,6 +38,7 @@ const Add = () => {
 			.then(function (response) {
 				setpokemon(response.data)
 			})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const [values, handleInputChange, reset] = useForm({
@@ -61,7 +62,6 @@ const Add = () => {
 			}
 		))
 		reset()
-
 		Swal.fire({
 			title: `${nombre} Catched!`,
 			text: 'You can see it on your profile screen.',
@@ -69,10 +69,13 @@ const Add = () => {
 			imageWidth: 400,
 			imageHeight: 200,
 			imageAlt: 'Catched Pokemon',
+			confirmButtonText: 'Continue',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				navigate('/')
+			}
 		})
-		navigate('/')
 	}
-
 
 	return (
 		<motion.section variants={containerVariants} initial="hidden" animate="show" exit="exit">
@@ -90,9 +93,7 @@ const Add = () => {
 				</button>
 				<br />
 				<small>you will be able to  see the level of this pokemon in your profile list </small>
-
 			</form>
-
 		</motion.section>
 	)
 }

@@ -31,7 +31,7 @@ const AppRoutes = () => {
     return (
       <>
         <section className='pantallaCarga'>
-          <h1 style={{margin:'1rem auto'}}>...</h1>
+          <h1 style={{margin:'10rem auto'}}>...</h1>
         </section>
       </>
     )

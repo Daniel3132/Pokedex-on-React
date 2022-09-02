@@ -44,6 +44,19 @@ header{
 #pagination{
     display: flex;
     gap: 1rem;
-    margin: 2rem auto;
-    color: black;
+    margin: 3rem auto;
+    font-size: medium;
+    button{
+        padding: .5rem 1rem;
+        border: 2px solid white;
+        &:hover{
+            border-color: black;
+        }
+    }
+    p{
+        padding: .5rem;
+        border-radius:  500px  500px ;
+        color: black;
+        background-color: white;
+    }
 }

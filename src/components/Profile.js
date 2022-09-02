@@ -26,13 +26,13 @@ const Perfil = () => {
 	const [modal, setModal] = useState(false)
 	const [enviarDatosModal, setEnviarDatosModal] = useState([])
 
-
 	let { pokemons } = useSelector(store => store.pokemons)
 
 	pokemons = pokemons.filter(p => p.trainer === obtenerUsuarioStorage('email'))
 
 	useEffect(() => {
 		dispatch(listPokemons())
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pokemons])
 
 	const edit = (codigo) => {
@@ -86,8 +86,7 @@ const Perfil = () => {
 				{
 					modal === true ?
 						<Edit pokemon={enviarDatosModal} modal={modal} setModal={setModal} />
-						:
-						''
+						: null
 				}
 			</div>
 

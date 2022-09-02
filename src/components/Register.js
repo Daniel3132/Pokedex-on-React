@@ -2,8 +2,10 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { registerAsync} from '../redux/actions/actionRegister';
+import { registerAsync } from '../redux/actions/actionRegister';
 import { Link } from 'react-router-dom';
+import '../styles/login.scss'
+
 
 //----------------Validacion de cada input -----------
 const SignupSchema = Yup.object().shape({
@@ -37,53 +39,53 @@ export const Register = () => {
 
     const dispatch = useDispatch()
 
-return (
+    return (
 
-    <div>
-        <Formik
-            initialValues={
-                {
-                    nombre: '',
-                    email: '',
-                    pass: '',
-                    pass2: ''
+        <div>
+            <Formik
+                initialValues={
+                    {
+                        nombre: '',
+                        email: '',
+                        pass: '',
+                        pass2: ''
+                    }
                 }
-            }
-            validationSchema={SignupSchema}
-            onSubmit={values => {
-                console.log(values)
-                dispatch(registerAsync(values.email, values.pass, values.nombre))
+                validationSchema={SignupSchema}
+                onSubmit={values => {
+                    console.log(values)
+                    dispatch(registerAsync(values.email, values.pass, values.nombre))
 
-            }}
-        >
-            {({ errors, touched, handleSubmit, handleChange, handleReset }) => (
-                <Form
-                    className='formulario'>
+                }}
+            >
+                {({ errors, touched, handleSubmit, handleChange, handleReset }) => (
+                    <Form
+                        className='formulario'>
 
-                    <h1>Registrarse</h1>
-                    <Field name="nombre" placeholder="Nombre" type="text" style={{ margin: "2%" }} />
-                    {errors.nombre && touched.nombre ?
-                        (<div>{errors.nombre}</div>) : null}
+                        <h1>Registrarse</h1>
+                        <Field name="nombre" placeholder="Nombre" type="text" />
+                        {errors.nombre && touched.nombre ?
+                            (<small>{errors.nombre}</small>) : null}
 
-                    <Field name="email" placeholder="Correo Electronico" type="email" style={{ margin: "2%" }} />
-                    {errors.email && touched.email ?
-                        (<div>{errors.email}</div>) : null}
+                        <Field name="email" placeholder="Correo Electronico" type="email" />
+                        {errors.email && touched.email ?
+                            (<small>{errors.email}</small>) : null}
 
-                    <Field name="pass" placeholder="Contraseña" type="password" style={{ margin: "2%" }} />
-                    {errors.pass && touched.pass ?
-                        (<div>{errors.pass}</div>) : null}
+                        <Field name="pass" placeholder="Contraseña" type="password" />
+                        {errors.pass && touched.pass ?
+                            (<small>{errors.pass}</small>) : null}
 
 
-                    <Field name="pass2" placeholder="Confirmar contraseña" type="password" style={{ margin: "2%" }} />
-                    {errors.pass2 && touched.pass2 ?
-                        (<div>{errors.pass2}</div>) : null}
+                        <Field name="pass2" placeholder="Confirmar contraseña" type="password" />
+                        {errors.pass2 && touched.pass2 ?
+                            (<small>{errors.pass2}</small>) : null}
 
-                    <button type="submit" style={{ margin: "2%"}}>Enviar</button>
-                    <Link to="/login">Iniciar Sesión</Link>
-                </Form>
-            )}
-            
-        </Formik>
-    </div>
-);
+                        <button type="submit">Enviar</button>
+                        <Link to="/login">Iniciar Sesión</Link>
+                    </Form>
+                )}
+
+            </Formik>
+        </div>
+    );
 } 

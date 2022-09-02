@@ -4,11 +4,9 @@ import { useForm } from '../hooks/useForm';
 import { editPokemons } from '../redux/actions/actionPokemons';
 
 
-
 const Edit = ({ pokemon, modal, setModal }) => {
 
     const dispatch = useDispatch()
-
 
     const [values, handleInputChange] = useForm({
         nombre: pokemon.nombre,
